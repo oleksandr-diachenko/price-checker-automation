@@ -6,7 +6,7 @@ import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
 import static com.codeborne.selenide.Selenide.$;
 import static org.openqa.selenium.By.id;
 
-@RelativeUrl("/")
+@RelativeUrl("")
 public class MainPage extends AbstractPage {
 
     private final SelenideElement fileChooser = $(id("file"));
