@@ -1,5 +1,6 @@
 package oleksandrdiachenko.pricechecker;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,12 @@ public abstract class AbstractTest {
     void before() {
         ConfigFactory.setProperty("env", getEnv());
         environment = ConfigFactory.create(Environment.class);
+        selenideConfiguration();
+    }
+
+    private void selenideConfiguration() {
+        Configuration.startMaximized = true;
+        Configuration.baseUrl = environment.url();
     }
 
     private String getEnv() {
