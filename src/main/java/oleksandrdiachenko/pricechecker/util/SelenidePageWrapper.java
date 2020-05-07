@@ -7,6 +7,8 @@ import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
 import oleksandrdiachenko.pricechecker.pageobject.AbstractPage;
 import org.apache.commons.lang3.StringUtils;
 
+import java.lang.reflect.InvocationTargetException;
+
 @Slf4j
 public class SelenidePageWrapper {
 
@@ -14,9 +16,9 @@ public class SelenidePageWrapper {
         RelativeUrl relativeUrl = page.getAnnotation(RelativeUrl.class);
         openIfNeeded(relativeUrl.value());
         try {
-            return page.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            log.error("Can't create new instance from {}", page, e);
+            return page.getConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            log.error("Can't create new instance from {}", page.getSimpleName(), e);
             throw new RuntimeException(e);
         }
     }
