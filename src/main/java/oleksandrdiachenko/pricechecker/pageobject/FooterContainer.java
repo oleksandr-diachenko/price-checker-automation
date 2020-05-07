@@ -13,6 +13,6 @@ public class FooterContainer {
     }
 
     public String getCopyrightLink() {
-        return copyright.getAttribute("href");
+        return copyright.find("[href]").getAttribute("href");
     }
 }
