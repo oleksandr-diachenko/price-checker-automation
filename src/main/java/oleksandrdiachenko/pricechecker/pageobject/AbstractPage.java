@@ -7,11 +7,11 @@ import static com.codeborne.selenide.Selenide.page;
 @NoArgsConstructor
 public abstract class AbstractPage {
 
-    protected HeaderContainer header() {
+    public HeaderContainer header() {
         return page(HeaderContainer.class);
     }
 
-    protected FooterContainer footer() {
+    public FooterContainer footer() {
         return page(FooterContainer.class);
     }
 }
