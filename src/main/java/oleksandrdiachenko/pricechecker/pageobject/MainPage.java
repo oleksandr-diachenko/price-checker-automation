@@ -3,10 +3,13 @@ package oleksandrdiachenko.pricechecker.pageobject;
 import com.codeborne.selenide.SelenideElement;
 import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Selenide.$;
+import static oleksandrdiachenko.pricechecker.util.SelenidePageWrapper.page;
 import static org.openqa.selenium.By.id;
 
-@RelativeUrl("")
+@RelativeUrl()
 public class MainPage extends AbstractPage {
 
     private final SelenideElement fileChooser = $(id("file"));
@@ -25,5 +28,30 @@ public class MainPage extends AbstractPage {
 
     public int getInsertInputValue() {
         return Integer.parseInt(insert.getValue());
+    }
+
+    public MainPage chooseFile(File file) {
+        fileChooser.uploadFile(file);
+        return page(MainPage.class);
+    }
+
+    public MainPage setInsertInput(int value) {
+        insert.setValue(String.valueOf(value));
+        return page(MainPage.class);
+    }
+
+    public MainPage clearInsertInput() {
+        insert.clear();
+        return page(MainPage.class);
+    }
+
+    public MainPage setUrlInput(int value) {
+        url.setValue(String.valueOf(value));
+        return page(MainPage.class);
+    }
+
+    public MainPage clearUrlInput() {
+        url.clear();
+        return page(MainPage.class);
     }
 }
