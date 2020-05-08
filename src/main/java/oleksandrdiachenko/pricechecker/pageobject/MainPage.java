@@ -4,8 +4,11 @@ import com.codeborne.selenide.SelenideElement;
 import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Set;
 
 import static com.codeborne.selenide.Selenide.$;
+import static java.util.stream.Collectors.toSet;
 import static oleksandrdiachenko.pricechecker.helper.SelenidePageWrapper.page;
 import static org.openqa.selenium.By.id;
 
@@ -38,6 +41,12 @@ public class MainPage extends AbstractPage {
 
     public String getTextFromFileSelector() {
         return fileLabel.getText();
+    }
+
+    public Set<FileType> getAcceptableFileTypes() {
+        return Arrays.stream(file.getAttribute("accept").split(","))
+                .map(FileType::getByExtension)
+                .collect(toSet());
     }
 
     public MainPage setInsertInput(int value) {

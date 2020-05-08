@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static oleksandrdiachenko.pricechecker.helper.SelenidePageWrapper.page;
+import static oleksandrdiachenko.pricechecker.pageobject.FileType.XLS;
+import static oleksandrdiachenko.pricechecker.pageobject.FileType.XLSX;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainPageTest extends AbstractTest {
@@ -88,5 +90,11 @@ public class MainPageTest extends AbstractTest {
         page(MainPage.class).selectFile(file);
 
         assertThat(page(MainPage.class).getTextFromFileSelector()).isEqualTo(file.getName());
+    }
+
+    @Test
+    public void shouldContainsExactlyAcceptableFileTypes() {
+        assertThat(page(MainPage.class).getAcceptableFileTypes())
+                .containsExactlyInAnyOrder(XLS, XLSX);
     }
 }
