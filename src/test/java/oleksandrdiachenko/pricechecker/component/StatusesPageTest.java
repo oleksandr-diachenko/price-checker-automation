@@ -1,12 +1,13 @@
-package oleksandrdiachenko.pricechecker;
+package oleksandrdiachenko.pricechecker.component;
 
+import oleksandrdiachenko.pricechecker.AbstractTest;
 import oleksandrdiachenko.pricechecker.pageobject.StatusesPage;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static oleksandrdiachenko.pricechecker.util.SelenidePageWrapper.page;
+import static oleksandrdiachenko.pricechecker.helper.SelenidePageWrapper.page;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StatusesPageTest extends AbstractTest {

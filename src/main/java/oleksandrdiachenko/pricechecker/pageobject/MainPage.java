@@ -6,7 +6,7 @@ import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
 import java.io.File;
 
 import static com.codeborne.selenide.Selenide.$;
-import static oleksandrdiachenko.pricechecker.util.SelenidePageWrapper.page;
+import static oleksandrdiachenko.pricechecker.helper.SelenidePageWrapper.page;
 import static org.openqa.selenium.By.id;
 
 @RelativeUrl()

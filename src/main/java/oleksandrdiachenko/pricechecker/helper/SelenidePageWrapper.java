@@ -1,4 +1,4 @@
-package oleksandrdiachenko.pricechecker.util;
+package oleksandrdiachenko.pricechecker.helper;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;

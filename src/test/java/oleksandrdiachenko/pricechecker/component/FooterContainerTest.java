@@ -1,10 +1,11 @@
-package oleksandrdiachenko.pricechecker;
+package oleksandrdiachenko.pricechecker.component;
 
+import oleksandrdiachenko.pricechecker.AbstractTest;
 import oleksandrdiachenko.pricechecker.pageobject.MainPage;
 import org.junit.jupiter.api.Test;
 
 import static oleksandrdiachenko.pricechecker.pageobject.SocialNetwork.GITHUB;
-import static oleksandrdiachenko.pricechecker.util.SelenidePageWrapper.page;
+import static oleksandrdiachenko.pricechecker.helper.SelenidePageWrapper.page;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FooterContainerTest extends AbstractTest {
