@@ -12,7 +12,8 @@ import static org.openqa.selenium.By.id;
 @RelativeUrl()
 public class MainPage extends AbstractPage {
 
-    private final SelenideElement fileChooser = $(id("file"));
+    private final SelenideElement file = $(id("file"));
+    private final SelenideElement fileLabel = $(id("fileInputLabel"));
     private final SelenideElement url = $(id("urlColumn"));
     private final SelenideElement insert = $(id("insertColumn"));
     private final SelenideElement check = $(id("check"));
@@ -30,9 +31,13 @@ public class MainPage extends AbstractPage {
         return Integer.parseInt(insert.getValue());
     }
 
-    public MainPage chooseFile(File file) {
-        fileChooser.uploadFile(file);
+    public MainPage selectFile(File file) {
+        this.file.uploadFile(file);
         return page(MainPage.class);
+    }
+
+    public String getTextFromFileSelector() {
+        return fileLabel.getText();
     }
 
     public MainPage setInsertInput(int value) {
