@@ -16,6 +16,10 @@ public class StatusesPageTest extends AbstractTest {
     public void shouldContainsTableHeader() {
         List<String> thead = Arrays.asList("Id", "Name", "Status", "Accepted time", "Download");
 
-        assertThat(page(StatusesPage.class).getTable()).containsOnlyOnce(thead);
+        assertThat(statuses().getTable()).containsOnlyOnce(thead);
+    }
+
+    private StatusesPage statuses() {
+        return page(StatusesPage.class);
     }
 }

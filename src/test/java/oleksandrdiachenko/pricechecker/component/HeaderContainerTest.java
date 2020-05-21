@@ -1,6 +1,7 @@
 package oleksandrdiachenko.pricechecker.component;
 
 import oleksandrdiachenko.pricechecker.AbstractTest;
+import oleksandrdiachenko.pricechecker.pageobject.HeaderContainer;
 import oleksandrdiachenko.pricechecker.pageobject.MainPage;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,11 @@ public class HeaderContainerTest extends AbstractTest {
 
     @Test
     void shouldPresentSocialNetwork() {
-        assertThat(page(MainPage.class).header().getSocialNetworks())
+        assertThat(header().getSocialNetworks())
                 .containsExactlyInAnyOrder(FACEBOOK, LINKEDIN, GITHUB, TELEGRAM, EMAIL);
+    }
+
+    private HeaderContainer header() {
+        return page(MainPage.class).header();
     }
 }

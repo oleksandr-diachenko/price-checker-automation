@@ -1,6 +1,7 @@
 package oleksandrdiachenko.pricechecker.component;
 
 import oleksandrdiachenko.pricechecker.AbstractTest;
+import oleksandrdiachenko.pricechecker.pageobject.FooterContainer;
 import oleksandrdiachenko.pricechecker.pageobject.MainPage;
 import org.junit.jupiter.api.Test;
 
@@ -12,9 +13,11 @@ public class FooterContainerTest extends AbstractTest {
 
     @Test
     void shouldPresentFooterText() {
-        assertThat(page(MainPage.class).footer().getCopyright())
-                .isEqualTo("© 2019 Copyright: Oleksandr Diachenko");
-        assertThat(page(MainPage.class).footer().getCopyrightLink())
-                .isEqualTo(GITHUB.getLink());
+        assertThat(footer().getCopyright()).isEqualTo("© 2019 Copyright: Oleksandr Diachenko");
+        assertThat(footer().getCopyrightLink()).isEqualTo(GITHUB.getLink());
+    }
+
+    private FooterContainer footer() {
+        return page(MainPage.class).footer();
     }
 }

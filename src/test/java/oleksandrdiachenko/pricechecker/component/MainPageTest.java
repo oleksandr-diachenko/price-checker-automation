@@ -18,12 +18,12 @@ public class MainPageTest extends AbstractTest {
 
     @Test
     public void shouldCheckButtonDisabledWhenFileNotSelected() {
-        assertThat(page(MainPage.class).isCheckEnabled()).isFalse();
+        assertThat(main().isCheckEnabled()).isFalse();
     }
 
     @Test
     public void shouldCheckButtonDisabledWhenUrlInputEmpty() {
-        page(MainPage.class).clearUrlInput();
+        main().clearUrlInput();
 
         assertThat(page(MainPage.class).isCheckEnabled()).isFalse();
     }
@@ -32,14 +32,14 @@ public class MainPageTest extends AbstractTest {
     public void shouldCheckButtonDisabledWhenUrlInputIsZero() {
         page(MainPage.class).setUrlInput(0);
 
-        assertThat(page(MainPage.class).isCheckEnabled()).isFalse();
+        assertThat(main().isCheckEnabled()).isFalse();
     }
 
     @Test
     public void shouldCheckButtonDisabledWhenInsertInputEmpty() {
-        page(MainPage.class).clearInsertInput();
+        main().clearInsertInput();
 
-        assertThat(page(MainPage.class).isCheckEnabled()).isFalse();
+        assertThat(main().isCheckEnabled()).isFalse();
     }
 
     @Test
@@ -58,28 +58,28 @@ public class MainPageTest extends AbstractTest {
 
     @Test
     public void shouldCheckButtonEnabledWhenInsertInputNotEmpty() {
-        page(MainPage.class)
+        main()
                 .selectFile(file)
                 .clearInsertInput()
                 .setInsertInput(1);
 
-        assertThat(page(MainPage.class).isCheckEnabled()).isTrue();
+        assertThat(main().isCheckEnabled()).isTrue();
     }
 
     @Test
     public void shouldCheckButtonEnabledWhenUrlInputNotEmpty() {
-        page(MainPage.class)
+        main()
                 .selectFile(file)
                 .clearUrlInput()
                 .setUrlInput(1);
 
-        assertThat(page(MainPage.class).isCheckEnabled()).isTrue();
+        assertThat(main().isCheckEnabled()).isTrue();
     }
 
     @Test
     public void shouldInputsHaveValueOneByDefault() {
-        int urlValue = page(MainPage.class).getUrlInputValue();
-        int insertValue = page(MainPage.class).getInsertInputValue();
+        int urlValue = main().getUrlInputValue();
+        int insertValue = main().getInsertInputValue();
 
         assertThat(urlValue).isEqualTo(1);
         assertThat(insertValue).isEqualTo(1);
@@ -96,5 +96,9 @@ public class MainPageTest extends AbstractTest {
     public void shouldContainsExactlyAcceptableFileTypes() {
         assertThat(page(MainPage.class).getAcceptableFileTypes())
                 .containsExactlyInAnyOrder(XLS, XLSX);
+    }
+
+    private MainPage main() {
+        return page(MainPage.class);
     }
 }
