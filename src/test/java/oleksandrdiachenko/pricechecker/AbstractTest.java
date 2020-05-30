@@ -2,6 +2,9 @@ package oleksandrdiachenko.pricechecker;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import oleksandrdiachenko.pricechecker.environment.Environment;
@@ -26,6 +29,16 @@ public abstract class AbstractTest {
         ConfigFactory.setProperty("env", getEnv());
         environment = ConfigFactory.create(Environment.class);
         selenideConfiguration();
+        restAssuredConfiguration();
+    }
+
+    private void restAssuredConfiguration() {
+        RestAssured.requestSpecification = new RequestSpecBuilder()
+                .setBaseUri(environment.baseApiUri())
+                .setPort(environment.apiPort())
+                .setBasePath(environment.baseApiPath())
+                .setAccept(ContentType.JSON)
+                .setContentType(ContentType.ANY).build();
     }
 
     private void selenideConfiguration() {

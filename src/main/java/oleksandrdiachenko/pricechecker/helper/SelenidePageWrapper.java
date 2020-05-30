@@ -5,7 +5,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import lombok.extern.slf4j.Slf4j;
 import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
 import oleksandrdiachenko.pricechecker.pageobject.AbstractPage;
-import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -26,14 +25,6 @@ public class SelenidePageWrapper {
     private static void openIfNeeded(String relativeUrl) {
         if (!WebDriverRunner.hasWebDriverStarted()) {
             Selenide.open(relativeUrl);
-        } else {
-            if (newUrl(relativeUrl)) {
-                Selenide.open(relativeUrl);
-            }
         }
-    }
-
-    private static boolean newUrl(String relativeUrl) {
-        return !StringUtils.endsWith(WebDriverRunner.url(), relativeUrl);
     }
 }

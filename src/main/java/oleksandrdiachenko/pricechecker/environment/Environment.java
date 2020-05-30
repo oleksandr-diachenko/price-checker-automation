@@ -8,4 +8,10 @@ import org.aeonbits.owner.Config;
 public interface Environment extends Config {
 
     String url();
+
+    String baseApiUri();
+
+    int apiPort();
+
+    String baseApiPath();
 }

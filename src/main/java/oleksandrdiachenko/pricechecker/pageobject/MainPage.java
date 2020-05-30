@@ -22,6 +22,11 @@ public class MainPage extends AbstractPage {
     private final SelenideElement check = $(id("check"));
     private final SelenideElement statuses = $(id("statuses"));
 
+    public MainPage clickCheck() {
+        check.click();
+        return page(MainPage.class);
+    }
+
     public boolean isCheckEnabled() {
         return check.isEnabled();
     }
@@ -67,5 +72,10 @@ public class MainPage extends AbstractPage {
     public MainPage clearUrlInput() {
         url.clear();
         return page(MainPage.class);
+    }
+
+    public StatusesPage clickStatuses() {
+        statuses.click();
+        return page(StatusesPage.class);
     }
 }

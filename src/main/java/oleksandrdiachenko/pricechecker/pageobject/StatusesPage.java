@@ -1,8 +1,11 @@
 package oleksandrdiachenko.pricechecker.pageobject;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import lombok.SneakyThrows;
 import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +41,13 @@ public class StatusesPage extends AbstractPage {
         return table.findAll("[mat-cell]").stream()
                 .map(SelenideElement::getText)
                 .collect(toList());
+    }
+
+    @SneakyThrows
+    public File download(long id) {
+        SelenideElement download = table.findAll("[mat-row]")
+                .find(Condition.and("td", Condition.text(String.valueOf(id))))
+                .find("button");
+        return download.download();
     }
 }

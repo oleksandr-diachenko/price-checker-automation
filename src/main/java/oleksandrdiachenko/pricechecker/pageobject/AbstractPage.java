@@ -14,4 +14,8 @@ public abstract class AbstractPage {
     public FooterContainer footer() {
         return page(FooterContainer.class);
     }
+
+    public AlertContainer alert() {
+        return page(AlertContainer.class);
+    }
 }
