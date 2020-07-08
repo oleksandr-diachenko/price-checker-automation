@@ -3,7 +3,7 @@ package oleksandrdiachenko.pricechecker.helper;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import lombok.extern.slf4j.Slf4j;
-import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
+import oleksandrdiachenko.pricechecker.annotation.RelativeUrl;
 import oleksandrdiachenko.pricechecker.pageobject.AbstractPage;
 
 import java.lang.reflect.InvocationTargetException;

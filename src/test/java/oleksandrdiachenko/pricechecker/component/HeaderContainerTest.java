@@ -12,9 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class HeaderContainerTest extends AbstractTest {
 
     @Test
-    void shouldPresentSocialNetwork() {
-        assertThat(header().getSocialNetworks())
-                .containsExactlyInAnyOrder(FACEBOOK, LINKEDIN, GITHUB, TELEGRAM, EMAIL);
+    void shouldHaveButtonsAndDropdown() {
+        assertThat(header().getHomeLink()).isEqualTo("/");
+        assertThat(header().getStatusesLink()).isEqualTo("/statuses");
+        assertThat(header().getUsernameOnDropdown()).isEqualTo(environment.username());
     }
 
     private HeaderContainer header() {

@@ -3,6 +3,7 @@ package oleksandrdiachenko.pricechecker.component;
 import oleksandrdiachenko.pricechecker.AbstractTest;
 import oleksandrdiachenko.pricechecker.pageobject.FooterContainer;
 import oleksandrdiachenko.pricechecker.pageobject.MainPage;
+import oleksandrdiachenko.pricechecker.pageobject.SocialNetwork;
 import org.junit.jupiter.api.Test;
 
 import static oleksandrdiachenko.pricechecker.pageobject.SocialNetwork.GITHUB;
@@ -15,6 +16,8 @@ public class FooterContainerTest extends AbstractTest {
     void shouldPresentFooterText() {
         assertThat(footer().getCopyright()).isEqualTo("© 2019 Copyright: Oleksandr Diachenko");
         assertThat(footer().getCopyrightLink()).isEqualTo(GITHUB.getLink());
+        assertThat(footer().getSocialNetworks())
+                .containsExactlyInAnyOrder(SocialNetwork.values());
     }
 
     private FooterContainer footer() {

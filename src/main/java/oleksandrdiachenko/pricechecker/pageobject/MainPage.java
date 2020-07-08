@@ -1,13 +1,17 @@
 package oleksandrdiachenko.pricechecker.pageobject;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
+import oleksandrdiachenko.pricechecker.annotation.RelativeUrl;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static oleksandrdiachenko.pricechecker.helper.SelenidePageWrapper.page;
 import static org.openqa.selenium.By.id;
@@ -21,6 +25,7 @@ public class MainPage extends AbstractPage {
     private final SelenideElement insert = $(id("insertColumn"));
     private final SelenideElement check = $(id("check"));
     private final SelenideElement statuses = $(id("statuses"));
+    private final ElementsCollection invalidFeedback = $$(".invalid-feedback");
 
     public MainPage clickCheck() {
         check.click();
@@ -77,5 +82,11 @@ public class MainPage extends AbstractPage {
     public StatusesPage clickStatuses() {
         statuses.click();
         return page(StatusesPage.class);
+    }
+
+    public List<String> getInvalidFeedback() {
+        return invalidFeedback.stream()
+                .map(SelenideElement::getText)
+                .collect(toList());
     }
 }

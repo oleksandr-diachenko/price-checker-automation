@@ -8,6 +8,7 @@ import io.restassured.http.ContentType;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import oleksandrdiachenko.pricechecker.environment.Environment;
+import oleksandrdiachenko.pricechecker.pageobject.LoginPage;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import static oleksandrdiachenko.pricechecker.helper.SelenidePageWrapper.page;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @Data
@@ -30,6 +32,7 @@ public abstract class AbstractTest {
         environment = ConfigFactory.create(Environment.class);
         selenideConfiguration();
         restAssuredConfiguration();
+        page(LoginPage.class).login(environment.username(), environment.password());
     }
 
     private void restAssuredConfiguration() {

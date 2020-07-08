@@ -1,4 +1,4 @@
-package oleksandrdiachenko.pricechecker.annotaion;
+package oleksandrdiachenko.pricechecker.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

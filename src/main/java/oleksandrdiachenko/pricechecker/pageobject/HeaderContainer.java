@@ -2,20 +2,25 @@ package oleksandrdiachenko.pricechecker.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import static com.codeborne.selenide.Selenide.$;
+import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.By.linkText;
 
 public class HeaderContainer {
 
-    private final SelenideElement socialNetwork = $(".social-network");
+    private final SelenideElement home = $(linkText("Home"));
+    private final SelenideElement statuses = $(linkText("Statuses"));
+    private final SelenideElement dropdown = $(id("userDropdown"));
 
-    public Set<SocialNetwork> getSocialNetworks() {
-        Set<SocialNetwork> socialNetworks = new HashSet<>();
-        for (SelenideElement socialNetwork : socialNetwork.findAll("[href]")) {
-            socialNetworks.add(SocialNetwork.getByLink(socialNetwork.getAttribute("href")));
-        }
-        return socialNetworks;
+    public String getHomeLink() {
+        return home.getAttribute("routerLink");
+    }
+
+    public String getStatusesLink() {
+        return statuses.getAttribute("routerLink");
+    }
+
+    public String getUsernameOnDropdown() {
+        return dropdown.getText();
     }
 }

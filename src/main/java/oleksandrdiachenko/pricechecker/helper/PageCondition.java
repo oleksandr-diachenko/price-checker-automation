@@ -12,7 +12,7 @@ public class PageCondition {
 
     public static ExpectPageCondition<StatusesPage, Boolean> lastRowContainsText(String text) {
         return statusesPage -> {
-            List<List<String>> table = statusesPage.getTable();
+            List<List<String>> table = statusesPage.getLastTablePage();
             return table.get(table.size() - 1).contains(text);
         };
     }

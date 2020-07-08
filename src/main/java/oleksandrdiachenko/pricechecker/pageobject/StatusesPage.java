@@ -3,7 +3,7 @@ package oleksandrdiachenko.pricechecker.pageobject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.SneakyThrows;
-import oleksandrdiachenko.pricechecker.annotaion.RelativeUrl;
+import oleksandrdiachenko.pricechecker.annotation.RelativeUrl;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,8 +17,12 @@ import static org.openqa.selenium.By.id;
 public class StatusesPage extends AbstractPage {
 
     private final SelenideElement table = $(id("statuses"));
+    private final SelenideElement pageNavigationLast = $(".mat-paginator-navigation-last");
 
-    public List<List<String>> getTable() {
+    public List<List<String>> getLastTablePage() {
+        if (pageNavigationLast.isEnabled()) {
+            pageNavigationLast.click();
+        }
         List<List<String>> tableData = new ArrayList<>();
         tableData.add(getHead());
         tableData.addAll(getBody());
@@ -38,15 +42,15 @@ public class StatusesPage extends AbstractPage {
     }
 
     private List<String> getRow(SelenideElement row) {
-        return table.findAll("[mat-cell]").stream()
+        return row.findAll("[mat-cell]").stream()
                 .map(SelenideElement::getText)
                 .collect(toList());
     }
 
     @SneakyThrows
-    public File download(long id) {
+    public File download(String time) {
         SelenideElement download = table.findAll("[mat-row]")
-                .find(Condition.and("td", Condition.text(String.valueOf(id))))
+                .find(Condition.and("td", Condition.text(time)))
                 .find("button");
         return download.download();
     }

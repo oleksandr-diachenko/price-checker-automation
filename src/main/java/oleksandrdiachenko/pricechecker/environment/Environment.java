@@ -14,4 +14,8 @@ public interface Environment extends Config {
     int apiPort();
 
     String baseApiPath();
+
+    String username();
+
+    String password();
 }
