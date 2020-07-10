@@ -11,7 +11,7 @@ import static org.openqa.selenium.By.id;
  * @author : Oleksandr Diachenko
  * @since : 7/8/2020
  **/
-@RelativeUrl("/login")
+@RelativeUrl("login")
 public class LoginPage extends AbstractPage {
 
     private final SelenideElement username = $(id("username"));

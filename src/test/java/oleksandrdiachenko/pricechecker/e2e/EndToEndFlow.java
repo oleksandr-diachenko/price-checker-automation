@@ -36,6 +36,11 @@ public class EndToEndFlow extends AbstractTest {
 
         main().clickStatuses();
 
+        new PageWait<>(statuses())
+                .withTimeout(Duration.ofSeconds(120))
+                .pollingEvery(Duration.ofSeconds(3))
+                .until(PageCondition.lastRowContainsText(IN_PROGRESS.name()));
+
         assertThat(getLastRecord())
                 .contains(file.getName(), IN_PROGRESS.name())
                 .doesNotContain(DOWNLOAD);

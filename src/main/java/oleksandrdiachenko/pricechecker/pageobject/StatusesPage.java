@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static java.util.stream.Collectors.toList;
 import static org.openqa.selenium.By.id;
 
-@RelativeUrl("/statuses")
+@RelativeUrl("statuses")
 public class StatusesPage extends AbstractPage {
 
     private final SelenideElement table = $(id("statuses"));
